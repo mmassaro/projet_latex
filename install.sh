@@ -17,7 +17,8 @@ main(){
 
 
   if [ -z "$PLTX" ]; then
-    export PLTX='~/.projet_latex'
+    #export PLTX='~/.projet_latex'
+    PLTX=~/.projet_latex
   else
     echo "Projet LaTeX is already installed"
     exit
