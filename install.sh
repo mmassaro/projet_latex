@@ -17,7 +17,6 @@ main(){
 
 
   if [ -z "$PLTX" ]; then
-    #export PLTX='~/.projet_latex'
     PLTX=~/.projet_latex
   else
     echo "Projet LaTeX is already installed"
@@ -37,6 +36,7 @@ main(){
 
   echo "In order to use the Projet LaTeX in the future, you need to add these lines"
   echo "in your shell config"
+  echo "  source $PLTX/lib/get_param.sh"
   echo "  source $PLTX/lib/projet_latex.sh"
 }
 
