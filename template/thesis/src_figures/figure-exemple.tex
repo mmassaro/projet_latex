@@ -1,0 +1,21 @@
+\begin{tikzpicture}[scale=0.5]
+  \draw[->] (-0.5,6,11) -- (0.5,6,11);
+  \draw[->] (-0.5,6,11) -- (-0.5,6,9);
+
+  \draw (0.5,6,11) node[anchor=west] {$x$};
+  \draw (-0.5,6,9) node[anchor=south] {$y$};
+
+  \foreach \i in {0,...,10}{
+    \draw (\i,6,0) -- (\i,6,10);
+    \draw (0,6,\i) -- (10,6,\i);
+
+    \draw[draw=gray] (\i,4,0) -- (\i,4,10);
+    \draw[draw=gray] (0,4,\i) -- (10,4,\i);
+
+    \draw[draw=gray] (\i,2,0) -- (\i,2,10);
+    \draw[draw=gray] (0,2,\i) -- (10,2,\i);
+
+    \draw (\i,0,0) -- (\i,0,10);
+    \draw (0,0,\i) -- (10,0,\i);
+  }
+\end{tikzpicture}

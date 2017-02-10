@@ -1,0 +1,171 @@
+\documentclass{thesis_massaro}
+
+\makeatletter
+
+\newenvironment{formatparttext}{}
+
+\include{header}
+
+\begin{document}
+
+%\toggletrue{remake}
+%\togglefalse{remake}
+
+\dominitoc
+\pagenumbering{roman}
+
+\newpage
+
+%Pour avoir la version officielle de la fac
+%\includepdf[pages= 1]{Couverture/Couv.pdf} %InsÃ©rer la premiÃ¨re page
+
+%\newpage
+%\thispagestyle{empty}
+%\null
+%\newpage
+%\thispagestyle{empty}
+%\null
+%\newpage
+%\thispagestyle{empty}
+%\null
+%\newpage
+
+
+\newgeometry{margin=0.45in}
+\thispagestyle{empty}\vbox to .9\vsize{
+
+    \vss
+    \vbox to 1\vsize{
+
+        \vspace{2cm}      
+
+        \haut{}{\blurb}{}
+        \vspace{1.5cm}
+        \vfill
+        \ligne{\LARGE{\textbf{\textsc{TH\`ESE DE DOCTORAT \\ DE L'UNIVERSIT\'E
+                DE XXXXXXXXX}}}}
+        \vspace{3mm}
+        \ligne{\large{\textbf{\textsc{\'Ecole Doctorale de Nom de l'école,
+                \\ doctorale}}}} 
+        \vspace{3mm}
+        \ligne{\textit{Spécialité}}
+        \vspace{3mm}
+        \ligne{\large{\textbf{\textsc{Nom Spécialité}}}}
+        \vspace{3mm}
+        \ligne{\textit{Présentée par}}
+        \vspace{3mm}
+        \ligne{\textbf{\large{Prenom \textsc{Nom}}}}
+        \vspace{3mm}
+        \ligne{\textit{Pour obtenir le grade de}}
+        \vspace{3mm}
+        \ligne{\textbf{\large{DOCTEUR DE L'UNIVERSIT\'E DE XXXXXX}}}
+
+        \vspace{1.8cm}
+        \ligne{\huge{\textbf{\textsc{Titre de la thèse}}}}
+        \vspace{1.8cm}
+        \vfill
+        \ligne{
+            \begin{tabular}{l}
+                \textit{Soutenue le} XX XXXX XXXX \textit{devant le jury composé de} :
+        \end{tabular}}
+        \vspace{5mm}
+        \ligne{
+            \begin{tabular}{rll}
+              \hline \\
+             \textit{Rapporteur} : & Prénom Nom & \textit{Etablissement}\\
+             \textit{Rapporteur} : & Prénom Nom & \textit{Etablissement}\\
+             \textit{Directeur de thèse} : & Prénom Nom &
+                                             \textit{Etablissement}\\
+             \textit{Examinateur} : & Prénom Nom &
+                                            \textit{Etablissement}\\ 
+             \textit{Examinateur} : & Prénom Nom &
+                                            \textit{Etablissement}\\ 
+             \textit{Examinateur} : & Prénom Nom & 
+                                      \textit{Etablissement}\\
+              \hline
+            \end{tabular}
+        }
+        \vspace{1.8cm}
+    }
+    \vss
+}
+\restoregeometry
+
+
+\newpage
+\thispagestyle{empty}
+\null
+
+\include{thanks}
+
+\cleardoublepage
+\thispagestyle{empty}
+\tikzsetnextfilename{generated_figures/dedication}
+\input{src_figures/dedication.tex}
+\newpage
+\thispagestyle{empty}
+\null
+\newpage
+
+\makenomenclature
+
+\begin{spacing}{0.1}
+\tableofcontents
+\listoffigures
+
+
+\end{spacing}
+
+\cleardoublepage
+\markboth{\MakeUppercase{Liste des symboles}}{\MakeUppercase{Liste des symboles}}
+\printnomenclature[3cm]
+
+
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+\include{introduction}
+
+\include{chapter_1}
+
+\nomenclature[b01]{$x$}{Définition 1.}
+\nomenclature[b02]{$y$}{Définition 2.}
+
+\include{chapter_2}
+
+\nomenclature[c01]{$z$}{Définition 3.}
+
+\include{conclusion}
+
+\include{annexe}
+
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliographie}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{references}
+
+%\newpage
+%\thispagestyle{empty}
+%\null
+%\newpage
+%\thispagestyle{empty}
+%\null
+%\newpage
+%\thispagestyle{empty}
+%\null
+%\newpage
+%\thispagestyle{empty}
+%\null
+%\newpage
+
+%\cleardoublepage
+%Pour inclure la derniÃ¨re page, page officielle de la fac
+%\setcounter{page}{0}
+%\includepdf[page= 2]{Couverture/Couv.pdf}%InsÃ©rer la premiÃ¨re page
+
+
+\end{document}
