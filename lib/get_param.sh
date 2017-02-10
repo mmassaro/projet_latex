@@ -181,8 +181,10 @@ function _display_opt(){
 
 
 function display_man(){
-    if [ -f "param_$1.sh" ]; then
-        source param_$1.sh
+    if [ -f "$1" ]; then
+    #if [ -f "param_$1.sh" ]; then
+        source $1
+        #source param_$1.sh
         _display_desc
         _display_opt
         unset opt_list
@@ -250,9 +252,11 @@ function set_args(){
 
     export _SET_DEFAULT_="1"
     if [ -z $BASH_SOURCE ]; then
-        source param_${array[1]}.sh
+        source ${array[1]}
+        #source param_${array[1]}.sh
     else
-        source param_${array[0]}.sh
+        source ${array[0]}
+        #source param_${array[0]}.sh
     fi
     unset _SET_DEFAULT_
 

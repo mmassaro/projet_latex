@@ -59,7 +59,7 @@ new_project(){
   local check="$(_check_args $@)"
   if [ "$check" = "1" ]; then
     echo "\nERROR : Wrong list of parameter:\n"
-    display_man latex
+    display_man ~/.projet_latex/lib/param_latex.sh
     return 1
   fi
 
@@ -74,13 +74,13 @@ new_project(){
     fi
 
     # XXX trouver le bon chemin pour une vraie installation
-    # cp ../template/$projectType/* "$INSTALL_DIR/$projectName"
-    cp ~/.projet_latex/template/$projectType/* "$INSTALL_DIR/"
+    # cp ../templates/$projectType/* "$INSTALL_DIR/$projectName"
+    cp ~/.projet_latex/templates/$projectType/* "$INSTALL_DIR/"
 
 
 
   # This function search and set the optionnal arguments
-  set_args latex $@
+  set_args ~/.projet_latex/lib/param_latex.sh $@
 
 
     case $projectType in
