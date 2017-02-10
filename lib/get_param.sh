@@ -16,6 +16,11 @@
 
 
 # XXX Bash/ksh : array from 0 !!! Zsh and other array from 1
+# XXX KSH = meme traitement que bash
+# XXX Deux choses prioritaires.
+# 1: la fonction recherche doit rechercher exactement les termes
+# 2: il faut verifier que les champs entrés sont bons
+# XXX Le declare -g ne fonctionne pas avec les anciennes version de bash
 
 
 bold=$(tput bold)

@@ -11,12 +11,14 @@
 #
 ##############################################################################
 
+source $PLTX/lib/get_param.sh
 
 _contains(){
   local e
   for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
   return 1
 }
+
 
 _create_sconstruct(){
     INSTALL_DIR=$1
@@ -31,7 +33,6 @@ _create_sconstruct(){
 }
 
 
-
 _check_args(){
   if [[ $# -ge 2 ]] && [[ ${1:0:1} != "-"  ]]; then
     local available_type=("article" "beamer" "letter" "poster" "thesis")
@@ -39,7 +40,6 @@ _check_args(){
     echo $?
   fi
 }
-
 
 
 
@@ -53,6 +53,9 @@ new_project(){
     return 1
   fi
 
+  projectName=$1
+  projectType=$2
+
   # Check arguments
   INSTALL_DIR=.
   local check="$(_check_args $@)"
@@ -61,22 +64,6 @@ new_project(){
     display_man latex
     return 1
   fi
-
-
-
-  # XXX analyser les arguments a l'aide de get_parameter
-  args=($1 $2)
-
-  if [ -z $BASH_SOURCE ]; then
-    projectName=${args[1]}
-    projectType=${args[2]}
-  else
-    projectName=${args[0]}
-    projectType=${args[1]}
-  fi
-  echo $projectName
-  echo $projectType
-
 
 
 
@@ -90,7 +77,8 @@ new_project(){
 
     # XXX trouver le bon chemin pour une vraie installation
     # cp ../template/$projectType/* "$INSTALL_DIR/$projectName"
-    cp ../template/$projectType/* "$INSTALL_DIR/"
+    cp $PLTX/template/$projectType/* "$INSTALL_DIR/"
+
 
 
   # This function search and set the optionnal arguments
@@ -98,12 +86,7 @@ new_project(){
 
 
     case $projectType in
-      letter)
-        if [ ! "$mfins" = "NONE" ]; then
-          rm $INSTALL_DIR/nomprenom.ins
-          cp $mfins $INSTALL_DIR/nomprenom.ins
-        fi;;
-
+      letter) _create_letter;;
       thesis) echo "ceci est une these";;
       article) echo "ceci est un article";;
       beamer)  echo "ceci est une presentation";;
@@ -114,8 +97,11 @@ new_project(){
 
 }
 
-create_letter(){
-  echo "creation lettre"
+_create_letter(){
+  if [ ! "$mfins" = "NONE" ]; then
+    rm $INSTALL_DIR/nomprenom.ins
+    cp $mfins $INSTALL_DIR/nomprenom.ins
+  fi
 }
 
 
