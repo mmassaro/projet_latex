@@ -17,7 +17,7 @@ main(){
 
 
   if [ -z "$PLTX" ]; then
-    PLTX=~/.projet_latex
+    export PLTX='~/.projet_latex'
   else
     echo "Projet LaTeX is already installed"
     exit
@@ -33,8 +33,6 @@ main(){
     printf "ERROR : git clone of projet_latex repo failed\n"
     exit 1
   }
-
-  source $PLTX/lib/projet_latex.sh
 
   echo "In order to use the Projet LaTeX in the future, you need to add these lines"
   echo "in your shell config"
