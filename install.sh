@@ -36,8 +36,8 @@ main(){
 
   echo "In order to use the Projet LaTeX in the future, you need to add these lines"
   echo "in your shell config"
-  echo "  source $PLTX/lib/get_param.sh"
   echo "  source $PLTX/lib/projet_latex.sh"
+  echo "  source $PLTX/lib/get_param.sh"
 }
 
 main
