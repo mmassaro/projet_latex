@@ -70,12 +70,12 @@ new_project(){
     mkdir $INSTALL_DIR/$projectName
 
     if command -v scons >/dev/null 2>&1 ; then
-      create_sconstruct $INSTALL_DIR/$projectName $projectName
+      _create_sconstruct $INSTALL_DIR/$projectName $projectName
     fi
 
     # XXX trouver le bon chemin pour une vraie installation
     # cp ../template/$projectType/* "$INSTALL_DIR/$projectName"
-    cp $PLTX/template/$projectType/* "$INSTALL_DIR/"
+    cp ~/.projet_latex/template/$projectType/* "$INSTALL_DIR/"
 
 
 
