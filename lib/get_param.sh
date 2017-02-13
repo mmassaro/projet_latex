@@ -296,8 +296,8 @@ function set_args(){
 
 
 # XXX peut etre qu'on appelle avec ./
+# XXX pas de verification de la validité des parametres
 import_function() {
-
     if [ -d $PLTX/func/$1 ]; then
         echo "ERROR : The function $1 already exists"
         return 1
@@ -319,7 +319,6 @@ import_function() {
         cp -r $5 $PLTX/func/$1/$5
         sed -i 's/'"$5"'/$PLTX\/func\/'"$1"'\/'"$5"'\//g' $PLTX/func/$1/core_$1.sh
     fi
-
 }
 
 
@@ -335,9 +334,11 @@ function test_set_params(){
 
 
 
-# XXX ici parcourir tout les dossiers et sourcer toute les fonctions
-source $PLTX/func/latex/projet_latex.sh
 
+for f in $(/bin/ls $PLTX/func);
+do
+    source $PLTX/func/$f/core_$f.sh;
+done
 
 
 
