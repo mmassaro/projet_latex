@@ -11,6 +11,7 @@
 #
 ##############################################################################
 
+
 _contains(){
   local e
   for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
@@ -47,7 +48,7 @@ new_project(){
   # Need help ?
   _contains "-h" $@
   if [ "$?" = "0" ]; then
-    display_man latex
+    display_man $PLTX/param_latex.sh
     return 1
   fi
 
@@ -59,7 +60,7 @@ new_project(){
   local check="$(_check_args $@)"
   if [ "$check" = "1" ]; then
     echo "\nERROR : Wrong list of parameter:\n"
-    display_man ~/.projet_latex/lib/param_latex.sh
+    display_man $PLTX/lib/param_latex.sh
     return 1
   fi
 
@@ -75,12 +76,12 @@ new_project(){
 
     # XXX trouver le bon chemin pour une vraie installation
     # cp ../templates/$projectType/* "$INSTALL_DIR/$projectName"
-    cp ~/.projet_latex/templates/$projectType/* "$INSTALL_DIR/"
+    cp $PLTX/templates/$projectType/* "$INSTALL_DIR/"
 
 
 
   # This function search and set the optionnal arguments
-  set_args ~/.projet_latex/lib/param_latex.sh $@
+  set_args $PLTX/lib/param_latex.sh $@
 
 
     case $projectType in

@@ -17,27 +17,14 @@ main(){
 
 
   if [ -z "$PLTX" ]; then
-    PLTX=~/.projet_latex
+    PLTX=$PWD
   else
     echo "Projet LaTeX is already installed"
-    exit
+    return 1
   fi
 
-  printf "Cloning Projet LaTeX ...\n"
-  hash git >/dev/null 2>&1 || {
-    echo "ERROR : git is not installed"
-    exit 1
-  }
+  source $PLTX/lib/get_param.sh
 
-  env git clone https://github.com/mmassaro/projet_latex.git $PLTX || {
-    printf "ERROR : git clone of projet_latex repo failed\n"
-    exit 1
-  }
-
-  echo "In order to use the Projet LaTeX in the future, you need to add these lines"
-  echo "in your shell config"
-  echo "  source $PLTX/lib/projet_latex.sh"
-  echo "  source $PLTX/lib/get_param.sh"
 }
 
 main

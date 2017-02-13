@@ -23,6 +23,10 @@
 # XXX Le declare -g ne fonctionne pas avec les anciennes version de bash
 
 
+# XXX ici parcourir tout les dossiers
+source $PLTX/func/latex/param_latex.sh
+
+
 bold=$(tput bold)
 normal=$(tput sgr0)
 
