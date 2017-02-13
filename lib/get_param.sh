@@ -27,8 +27,6 @@
 
 PLTX=$PWD
 
-# XXX ici parcourir tout les dossiers
-source $PLTX/func/latex/param_latex.sh
 
 
 bold=$(tput bold)
@@ -189,8 +187,8 @@ function _display_opt(){
 
 
 function display_man(){
-    if [ -f "$PLTX/$1/param_$1.sh" ]; then
-        source $PLTX/$1/param_$1.sh
+    if [ -f "$PLTX/func/$1/param_$1.sh" ]; then
+        source $PLTX/func/$1/param_$1.sh
         _display_desc
         _display_opt
         unset opt_list
@@ -258,9 +256,9 @@ function set_args(){
 
     export _SET_DEFAULT_="1"
     if [ -z $BASH_SOURCE ]; then
-        source $PLTX/${array[1]}/param_${array[1]}.sh
+        source $PLTX/func/${array[1]}/param_${array[1]}.sh
     else
-        source $PLTX/${array[0]}/param_${array[0]}.sh
+        source $PLTX/func/${array[0]}/param_${array[0]}.sh
     fi
     unset _SET_DEFAULT_
 
@@ -306,6 +304,9 @@ function test_set_params(){
 
 
 
+
+# XXX ici parcourir tout les dossiers
+source $PLTX/func/latex/projet_latex.sh
 
 
 
