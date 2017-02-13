@@ -295,6 +295,35 @@ function set_args(){
 
 
 
+# XXX peut etre qu'on appelle avec ./
+import_function() {
+
+    if [ -d $PLTX/func/$1 ]; then
+        echo "ERROR : The function $1 already exists"
+        return 1
+    fi
+
+    mkdir $PLTX/func/$1
+    cp $2 $PLTX/func/$1/core_$1.sh
+    if [ -n $3 ]; then
+        if [ ! "$3" = "-folder" ]; then
+            cp $3 $PLTX/func/$1/param_$1.sh
+            sed -i 's/'"$3"'/$PLTX\/func\/'"$1"'\/param_'"$1"'.sh/g' $PLTX/func/$1/core_$1.sh
+        else
+            cp -r $4 $PLTX/func/$1/$4
+            sed -i 's/'"$4"'/$PLTX\/func\/'"$1"'\/'"$4"'\//g' $PLTX/func/$1/core_$1.sh
+        fi
+    fi
+
+    if [ -n $4 ] && [ "$4" = "-folder" ]; then
+        cp -r $5 $PLTX/func/$1/$5
+        sed -i 's/'"$5"'/$PLTX\/func\/'"$1"'\/'"$5"'\//g' $PLTX/func/$1/core_$1.sh
+    fi
+
+}
+
+
+
 
 
 function test_set_params(){
