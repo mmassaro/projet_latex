@@ -20,14 +20,13 @@ _contains(){
 
 
 _create_sconstruct(){
-    INSTALL_DIR=$1
-    echo $INSTALL_DIR
-    if [ ! -f $INSTALL_DIR/sconstruct ]; then
-        touch $INSTALL_DIR/sconstruct
-        echo "import os" >> $INSTALL_DIR/sconstruct
-        echo "env=Environment()" >> $INSTALL_DIR/sconstruct
-        echo "env.AppendUnique(PDFLATEXFLAGS='-shell-escape')" >> $INSTALL_DIR/sconstruct
-        echo "env.PDF('${2}.tex')" >> $INSTALL_DIR/sconstruct
+    local DIR=$1
+    if [ ! -f $DIR/sconstruct ]; then
+        touch $DIR/sconstruct
+        echo "import os" >> $DIR/sconstruct
+        echo "env=Environment()" >> $DIR/sconstruct
+        echo "env.AppendUnique(PDFLATEXFLAGS='-shell-escape')" >> $DIR/sconstruct
+        echo "env.PDF('toto.tex')" >> $DIR/sconstruct
     fi
 }
 
@@ -71,10 +70,10 @@ new_project(){
     mkdir $INSTALL_DIR/$projectName
 
     if command -v scons >/dev/null 2>&1 ; then
-      _create_sconstruct $INSTALL_DIR/$projectName $projectName
+      _create_sconstruct $INSTALL_DIR/$projectName
     fi
 
-    cp $PLTX/func/latex/templates/$projectType/* "$INSTALL_DIR/"
+    cp $PLTX/func/latex/templates/$projectType/* "$INSTALL_DIR/$projectName/"
 
 
 
@@ -95,10 +94,23 @@ new_project(){
 }
 
 _create_letter(){
+  local filename="sample_letter"
+  if [ ! "$mfname" = "NONE" ]; then
+    filename=$mfname
+    mv $INSTALL_DIR/$projectName/sample_letter.tex $INSTALL_DIR/$projectName/$filename.tex
+  fi
+  if [ -f $INSTALL_DIR/$projectName/sconstruct ]; then
+    sed -i "s/toto.tex/$filename.tex/g" $INSTALL_DIR/$projectName/sconstruct
+  fi
+
+
   if [ ! "$mfins" = "NONE" ]; then
     rm $INSTALL_DIR/nomprenom.ins
     cp $mfins $INSTALL_DIR/nomprenom.ins
   fi
+
+
+
 }
 
 

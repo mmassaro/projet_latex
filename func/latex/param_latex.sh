@@ -12,10 +12,12 @@ set_desc add "new_project projectName beamer"
 set_opt_list add -h "Display this manual"
 set_opt_list add -author "Author name"
 set_opt_list add -fins "Path of file.ins with general informations on author in a letter"
+set_opt_list add -fname "Name of the document"
 
 
 if [ "$_SET_DEFAULT_" = "1" ]; then
     # Set default values to the options.
     mauthor="John Doe"
     mfins="NONE"
+    mfname="NONE"
 fi
