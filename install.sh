@@ -13,17 +13,7 @@
 
 main(){
 
-  # XXX Il faut verifier que la version de bash ou de zsh soit bonne
-
-
-  if [ -z "$PLTX" ]; then
-    PLTX=$PWD
-  else
-    echo "Projet LaTeX is already installed"
-    return 1
-  fi
-
-  source $PLTX/lib/get_param.sh
+  source ./lib/get_param.sh
 
 }
 

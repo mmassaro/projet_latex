@@ -48,7 +48,7 @@ new_project(){
   # Need help ?
   _contains "-h" $@
   if [ "$?" = "0" ]; then
-    display_man $PLTX/param_latex.sh
+    display_man latex
     return 1
   fi
 
@@ -60,7 +60,7 @@ new_project(){
   local check="$(_check_args $@)"
   if [ "$check" = "1" ]; then
     echo "\nERROR : Wrong list of parameter:\n"
-    display_man $PLTX/lib/param_latex.sh
+    display_man latex
     return 1
   fi
 
@@ -81,7 +81,7 @@ new_project(){
 
 
   # This function search and set the optionnal arguments
-  set_args $PLTX/lib/param_latex.sh $@
+  set_args latex $@
 
 
     case $projectType in

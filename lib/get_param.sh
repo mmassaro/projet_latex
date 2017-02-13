@@ -23,6 +23,10 @@
 # XXX Le declare -g ne fonctionne pas avec les anciennes version de bash
 
 
+
+
+PLTX=$PWD
+
 # XXX ici parcourir tout les dossiers
 source $PLTX/func/latex/param_latex.sh
 
@@ -185,10 +189,8 @@ function _display_opt(){
 
 
 function display_man(){
-    if [ -f "$1" ]; then
-    #if [ -f "param_$1.sh" ]; then
-        source $1
-        #source param_$1.sh
+    if [ -f "$PLTX/$1/param_$1.sh" ]; then
+        source $PLTX/$1/param_$1.sh
         _display_desc
         _display_opt
         unset opt_list
@@ -256,11 +258,9 @@ function set_args(){
 
     export _SET_DEFAULT_="1"
     if [ -z $BASH_SOURCE ]; then
-        source ${array[1]}
-        #source param_${array[1]}.sh
+        source $PLTX/${array[1]}/param_${array[1]}.sh
     else
-        source ${array[0]}
-        #source param_${array[0]}.sh
+        source $PLTX/${array[0]}/param_${array[0]}.sh
     fi
     unset _SET_DEFAULT_
 
