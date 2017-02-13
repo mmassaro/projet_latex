@@ -74,9 +74,7 @@ new_project(){
       _create_sconstruct $INSTALL_DIR/$projectName $projectName
     fi
 
-    # XXX trouver le bon chemin pour une vraie installation
-    # cp ../templates/$projectType/* "$INSTALL_DIR/$projectName"
-    cp $PLTX/templates/$projectType/* "$INSTALL_DIR/"
+    cp $PLTX/func/latex/templates/$projectType/* "$INSTALL_DIR/"
 
 
 

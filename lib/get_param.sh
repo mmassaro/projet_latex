@@ -14,14 +14,15 @@
 #
 ##############################################################################
 
-
+# XXX dans l'ideal on installe ca dans un .projet_latex
 # XXX Bash/ksh : array from 0 !!! Zsh and other array from 1
 # XXX KSH = meme traitement que bash
 # XXX Deux choses prioritaires.
 # 1: la fonction recherche doit rechercher exactement les termes
 # 2: il faut verifier que les champs entrés sont bons
 # XXX Le declare -g ne fonctionne pas avec les anciennes version de bash
-
+# XXX Il faut ajouter une fonction qui importe une fonction fonction de
+# l'utilisateur et une autre qui en telecharge une
 
 
 
@@ -305,7 +306,7 @@ function test_set_params(){
 
 
 
-# XXX ici parcourir tout les dossiers
+# XXX ici parcourir tout les dossiers et sourcer toute les fonctions
 source $PLTX/func/latex/projet_latex.sh
 
 
